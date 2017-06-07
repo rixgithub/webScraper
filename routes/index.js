@@ -143,6 +143,27 @@ module.exports = function(router) {
 	});
 
 
+	// Grab an article by it's ObjectId
+	router.get("/delete/:id", function(req, res) {
+		console.log(req.body);
+	  // // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
+	  // Article.findByIdAndRemove({ "_id": req.params.id })
+	  // // ..and populate all of the notes associated with it
+	  // .populate("note")
+	  // // now, execute our query
+	  // .exec(function(error, data) {
+	  //   // Log any errors
+	  //   if (error) {
+	  //     console.log(error);
+	  //   }
+	  //   // Otherwise, send the doc to the browser as a json object
+	  //   else {
+	  //     res.json(data);
+	  //   }
+	  // });
+	});
+
+
 
 
 

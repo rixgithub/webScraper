@@ -6,9 +6,7 @@ $(document).ready(function() {
 		// Empty the notes from the note section
 		  $("#articleNotes").empty();
 		  // Get the unique id for the closest button
-		  var idArray = $(this).closest(".well").find(".idArticle");
-
-		  var thisId = idArray[0].textContent;
+		  var thisId = $(this).attr("data-id");
 
 		  // Now make an ajax call for the Article
 		  $.ajax({
@@ -17,32 +15,32 @@ $(document).ready(function() {
 		  })
 		    // With that done, add the note information to the page
 		    .done(function(data) {
-		      console.log(data);
-		      // // The title of the article
-		      // var noteDiv = $("<div id='noteDiv'>");
-		      // noteDiv.append("<h2>" + data.title + "</h2>");
-		      // // An input to enter a new title
-		      // noteDiv.append("<input id='titleinput' name='title' >");
-		      // // A textarea to add a new note body
-		      // noteDiv.append("<textarea id='bodyinput' name='body'></textarea>");
-		      // // A button to submit a new note, with the id of the article saved to it
-		      // noteDiv.append("<button data-id='" + data._id + "' id='saveNote'>Save Note</button>");
+		
+		      // The title of the article
+		      var noteDiv = $("<div id='noteDiv'>");
+		      noteDiv.append("<h3>" + data.title + "</h3r>");
+		      // An input to enter a new title
+		      noteDiv.append("<input id='titleinput' name='title' >");
+		      // A textarea to add a new note body
+		      noteDiv.append("<textarea id='bodyinput' name='body'></textarea>");
+		      // A button to submit a new note, with the id of the article saved to it
+		      noteDiv.append("<button data-id='" + data._id + "' class='saveNote'>Save Note</button>");
 
-		      // $("#articleNotes").prepend(noteDiv);
+		      $("#articleNotes").prepend(noteDiv);
 
-		      // // If there's a note in the article
-		      // if (data.note) {
-		      //   // Place the title of the note in the title input
-		      //   $("#titleinput").val(data.note.title);
-		      //   // Place the body of the note in the body textarea
-		      //   $("#bodyinput").val(data.note.body);
-		      // }
+		      // If there's a note in the article
+		      if (data.note) {
+		        // Place the title of the note in the title input
+		        $("#titleinput").val(data.note.title);
+		        // Place the body of the note in the body textarea
+		        $("#bodyinput").val(data.note.body);
+		      }
 	    });
 	});
 
 
-	// When you click the leave note button
-	$(document).on("click", ".leavenote", function() {
+	// When you click the save note button
+	$(document).on("click", ".saveNote", function() {
 		  // Grab the id associated with the article from the submit button
 		  var thisId = $(this).attr("data-id");
 
@@ -70,4 +68,32 @@ $(document).ready(function() {
 		  $("#bodyinput").val("");
 	});
 
+		// When you click the delete article button
+		$(document).on("click", ".deleteArticle", function() {
+		// Grab the id associated with the button
+		  var thisId = $(this).attr("data-id");
+		  // Run a POST request to delete article
+		   $.ajax({
+		    method: "POST",
+		    url: "/delete/" + thisId,
+		    data: thisId
+		   });
+		});
+
+
+
+
+
+
+
+
+
+
+
+
 });
+
+
+
+
+

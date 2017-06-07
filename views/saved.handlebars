@@ -34,10 +34,10 @@
         {{#each articles}}
         <div class="well">
         <ul>   
-          <li class="idArticle">{{id}}</li> 
           <li>{{title}}</li>
           <li><a href={{link}} target=_blank>{{link}}</a></li>
-          <li><button class="leaveNote btn btn-default">Leave Note</button></li>
+          <li><button data-id="{{_id}}" class="deleteArticle btn btn-default">Delete Article</button></li>
+          <li><button data-id="{{_id}}" class="leaveNote btn btn-default">Leave Note</button></li>
           </div>
         </ul>
         {{/each}}
