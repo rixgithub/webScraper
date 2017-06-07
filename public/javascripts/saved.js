@@ -72,6 +72,7 @@ $(document).ready(function() {
 		$(document).on("click", ".deleteArticle", function() {
 		// Grab the id associated with the button
 		  var thisId = $(this).attr("data-id");
+		  console.log(thisId);
 		  // Run a POST request to delete article
 		   $.ajax({
 		    method: "POST",
