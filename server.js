@@ -22,7 +22,7 @@ var Note = require("./models/Notes.js");
 var Article = require("./models/Article.js");
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://localhost/webscraper");
+mongoose.connect("mongodb://heroku_v4qkw6wb:oo3u9adco09svla2npm646bhbm@ds111622.mlab.com:11622/heroku_v4qkw6wb");
 var db = mongoose.connection;
 
 // Show any mongoose errors
