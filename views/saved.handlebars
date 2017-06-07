@@ -1,0 +1,69 @@
+<div class="container">
+  
+  <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="navbar-brand" style="color: white">Mongo Scraper</div>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+             <li><a href="/" style="color: white">Home</a></li>
+            <li class="active"><a href="/saved">Saved Articles<span class="sr-only">(current)</span></a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+  </div>
+
+  <div class="container" id="mainDiv">
+    <h1>Web Scraper</h1>
+    <h2>Your Saved Articles<h2>
+  </div>
+
+  <div class="container" id="savedArticles">
+        {{#each articles}}
+        <div class="well">
+        <ul>   
+          <li class="idArticle">{{id}}</li> 
+          <li>{{title}}</li>
+          <li><a href={{link}} target=_blank>{{link}}</a></li>
+          <li><button class="leaveNote btn btn-default">Leave Note</button></li>
+          </div>
+        </ul>
+        {{/each}}
+  </div>
+  
+  <div class="container" id="divForNotes">
+    <div class="container" id="articleNotes">
+      <!-- notes for articles go here-->
+    </div>
+ 
+
+      
+      <!-- jquery link -->
+        <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+
+      <!--  bootstap javascript link -->
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+      <!-- javascript link for saved page -->
+        <script src="/javascripts/saved.js"></script>
+
+</div>
+
+
+
+

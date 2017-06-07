@@ -1,0 +1,61 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	padding:0;
+}
+.navbar {
+	margin: auto;
+	background-color: blue;
+	color: white;
+}
+
+#newScrape { 
+	margin-left: 20px;
+	background-color: red;
+	color: white;
+	border-color: red;
+}
+
+#mainDiv {
+	background: url("../images/bgimage.jpg");
+	background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin: 0;
+    margin-bottom: 15px;
+    padding: 0;
+}
+
+h1 {
+	font-size: 75px;
+	text-align: left;
+	color: white;
+	margin: 100px;
+}
+
+h2 {
+	font-size: 50px;
+	text-align: left;
+	color: white;
+	margin: 50px;
+}
+
+.divForArticles {
+	overflow: auto;
+}
+
+.divForNotes {
+	overflow: auto;
+}
+
+#noteDiv {
+	background-color: black;
+	height: 300px;
+	width: 300px;
+}
+
+#leaveNote {
+	margin-left: 10px;
+}
