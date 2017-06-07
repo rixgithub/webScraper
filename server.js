@@ -12,7 +12,7 @@ var mongoose = require("mongoose");
 // Set mongoose to leverage built in JavaScript ES6 Promises
 mongoose.Promise = Promise;
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 // Sets up our express server
 var app = express();
