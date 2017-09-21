@@ -1,49 +1,93 @@
 body {
-	margin: 0;
-	padding: 0;
+ 	background: url("../images/bgimage.jpg") no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	width: 100%;
+	height: 100%;
 }
 
-.container {
-	padding:0;
-}
 .navbar {
-	margin: auto;
-	background-color: blue;
+	width: 100%;
+	margin-bottom: 0;
+	background: rgba(0,0,0,0.25);
+	border: rgba(0,0,0,0.25);
+}
+
+.navbar .navbar-brand {
 	color: white;
 }
 
-#newScrape { 
-	margin-left: 20px;
-	background-color: red;
+#navSaved {
 	color: white;
-	border-color: red;
 }
 
-#mainDiv {
-	background: url("../images/bgimage.jpg");
-	background-size: 100% 100%;
-    background-repeat: no-repeat;
-    margin: 0;
-    margin-bottom: 15px;
-    padding: 0;
+#navHome {
+	color: white;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: white;
 }
 
 h1 {
-	font-size: 75px;
-	text-align: left;
-	color: white;
-	margin: 100px;
+	font-family: 'News Cycle', sans-serif;
+	font-size: 160%;
+	color: LightSkyblue;
+	text-shadow: 2px 4px 3px rgba(0,0,0,0.50);
 }
 
 h2 {
-	font-size: 50px;
-	text-align: left;
+	font-size: 55%;
+	color: LightSkyblue;
+	text-shadow: 2px 4px 3px rgba(0,0,0,0.50);
+}
+
+.panel-heading h3 a {
+	font-size: 230%;
+}
+
+h4 {
+	font-size: 150%;
+}
+
+.panel {
+	background: rgba(249, 184, 109, 0.75);
+}
+
+.panel .panel-heading {
+	background-color: #ffa94f;
+	overflow: auto;
+	background: rgba(255, 162, 56, 0.75);
+}
+
+#newScrape {
+	margin: 8px;
+	background-color: LightSkyblue;
 	color: white;
-	margin: 50px;
+	border-color: LightSkyblue;
+}
+
+#jumbo {
+	text-align: center;
+	font-size: 500%;
+}
+
+.panel-title a {
+	font-size: 1.6em;
 }
 
 .divForArticles {
 	overflow: auto;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
 }
 
 .divForNotes {
@@ -56,6 +100,21 @@ h2 {
 	width: 300px;
 }
 
-#leaveNote {
-	margin-left: 10px;
+.saveButton {
+	margin: 1%;
+	background-color: #8aa0d8;
+}
+
+.leaveNote {
+	margin: 1%;
+	background-color: #8aa0d8;
+	font-size: 135%;
+	color: white;
+}
+
+.deleteArticle {
+	margin: 1%;
+	background-color: #5f80d3;
+	font-size: 135%;
+	color: white;
 }

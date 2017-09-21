@@ -12,6 +12,11 @@ var ArticleSchema = new Schema({
     required: true,
     unique: true
   },
+  excerpt: {
+    type: String,
+    required: true,
+    unique: true
+  },
   // link is a required string
   link: {
     type: String,
@@ -19,10 +24,10 @@ var ArticleSchema = new Schema({
     unique: true
   },
   // This only saves one note's ObjectId, ref refers to the Note model
-  note: {
+  notes: [{
     type: Schema.Types.ObjectId,
     ref: "Note"
-  }
+  }]
 });
 
 // Apply the uniqueValidator plugin to userSchema.

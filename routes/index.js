@@ -3,7 +3,7 @@ var router = express.Router();
 var request = require('request');
 var cheerio = require('cheerio');
 var mongoose = require("mongoose");
-var Note = require("../models/Notes.js");
+var Note = require("../models/Note.js");
 var Article = require("../models/Article.js");
 
 mongoose.Promise = Promise;
@@ -43,34 +43,49 @@ module.exports = function(router) {
 
 
 	// A GET request to scrape the website
-	router.get("/scrape", function(req, res) {
+	router.get("/scrape", function(req, res, next) {
 
 	  // First, we grab the body of the html with request
-	  request("https://news.ycombinator.com/", function(error, response, html) {
+	  request("https://zcomm.org/znet/", function(error, response, html) {
 	    // Then, we load that into cheerio and save it to $ for a shorthand selector
-	    var $ = cheerio.load(html);
-	    // save titlesLinks object in array
-	    var articleData = [];
+	    if (error) {
+	    	console.log("error");
+	    	console.log(error);
+	    }
 
-	    // For each element with a "title" class
-	    $(".title").each(function(i, element) {
-	      // Save the text of each link enclosed in the current element
-	      var title = $(this).children("a").text();
-	      // Save the href value of each link enclosed in the current element
-	      var link = $(this).children("a").attr("href");
-         
-	        // If this title element had both a title and a link
-	          if (title && link) {
-	            // Save the data in a variable
-	            var titlesLinks = {
-	            	 title: title,
-                     link: link
-	            };  
-			    articleData.push(titlesLinks);
-	          } 
-	    });  
-	    res.send(articleData);
-	  });
+	    else {
+		    var $ = cheerio.load(html);
+
+		    // save titlesLinks object in array
+		    var scrapedArticles = {
+		    	articles: []
+		    };
+
+		    // within top-coloumns-left class and upw-content class grab items
+		    $(".top-coloumns-left .upw-content").each(function(i, element) {
+
+		      // Save the text of each title enclosed in the current element
+		      var title = $(this).children(".post-title").text();
+		      // Save the text of each excerpt enclosed in the current element
+		      var excerpt = $(this).children(".post-excerpt").text();
+		      // Save the href value of each link enclosed in the current element
+		      var link = $(this).children(".post-title").children("a").attr("href")
+
+		      // If this title element had both a title and a link
+		          if (title && excerpt && link) {
+		            // Save the data in a variable
+		            var titlesExcerptsLinks = {
+		            	 title: title,
+		            	 excerpt: excerpt,
+	                     link: link
+		            };  
+			    	scrapedArticles.articles.push(titlesExcerptsLinks);
+			      };
+		    });  
+		    res.render("home", scrapedArticles);
+	    }
+
+	  }); 
 	});
 
 
@@ -97,7 +112,7 @@ module.exports = function(router) {
 	  // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
 	  Article.findOne({ "_id": req.params.id })
 	  // ..and populate all of the notes associated with it
-	  .populate("note")
+	  .populate("notes")
 	  // now, execute our query
 	  .exec(function(error, data) {
 	    // Log any errors

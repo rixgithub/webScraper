@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    console.log( "ready!" );
-
 
 	$(document).on("click", ".leaveNote", function() {
 		// Empty the notes from the note section
@@ -79,18 +77,8 @@ $(document).ready(function() {
 		    url: "/delete/" + thisId,
 		    data: thisId
 		   });
+		   location.reload();
 		});
-
-
-
-
-
-
-
-
-
-
-
 
 });
 
