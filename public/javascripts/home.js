@@ -1,5 +1,17 @@
 $(document).ready(function() {
 
+
+	$('#newScrape').click(function() {
+		$.ajax({
+			url: "/scrape",
+			method: "GET"
+		}).done(function(data) {
+			console.log(data)
+	    	$('#numArticles').modal({'show' : true});
+		});
+	});		
+	
+
 	// Save article button
 	$(document).on("click", ".saveButton", function() {
 		
