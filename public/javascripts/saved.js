@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
 	$(document).on("click", ".leaveNote", function() {
+
+		$('#myModal').modal();
 		// Empty the notes from the note section
 		  $("#articleNotes").empty();
 		  // Get the unique id for the closest button
@@ -13,25 +15,21 @@ $(document).ready(function() {
 		  })
 		    // With that done, add the note information to the page
 		    .done(function(data) {
-		
+
+		   	  console.log("this is the " + data);
 		      // The title of the article
-		      var noteDiv = $("<div id='noteDiv'>");
-		      noteDiv.append("<h3>" + data.title + "</h3r>");
-		      // An input to enter a new title
-		      noteDiv.append("<input id='titleinput' name='title' >");
+		      var noteDiv = $("<div class='form-group' id='noteDiv'>");
 		      // A textarea to add a new note body
-		      noteDiv.append("<textarea id='bodyinput' name='body'></textarea>");
+		      noteDiv.append("<textarea class='form-control' rows='3' id='bodyInput' max-width='50px' name='body'</textarea>");
 		      // A button to submit a new note, with the id of the article saved to it
-		      noteDiv.append("<button data-id='" + data._id + "' class='saveNote'>Save Note</button>");
+		      noteDiv.append("<button data-id='" + data._id + "'class='saveNote btn btn-primary'>Save Note</button>");
 
 		      $("#articleNotes").prepend(noteDiv);
 
 		      // If there's a note in the article
 		      if (data.note) {
-		        // Place the title of the note in the title input
-		        $("#titleinput").val(data.note.title);
 		        // Place the body of the note in the body textarea
-		        $("#bodyinput").val(data.note.body);
+		        $("#bodyInput").val(data.note.body);
 		      }
 	    });
 	});
@@ -47,30 +45,24 @@ $(document).ready(function() {
 		    method: "POST",
 		    url: "/articles/" + thisId,
 		    data: {
-		      // Value taken from title input
-		      title: $("#titleinput").val(),
 		      // Value taken from note textarea
-		      body: $("#bodyinput").val()
+		      body: $("#bodyInput").val()
 		    }
 		  })
 		    // With that done
 		    .done(function(data) {
-		      // Log the response
-		      // console.log(data);
-		      // Empty the notes section
-		      $("#notes").empty();
+		      $("#bodyInput").val("");
 		    });
 
 		  // Also, remove the values entered in the input and textarea for note entry
-		  $("#titleinput").val("");
-		  $("#bodyinput").val("");
+		  // $("#bodyInput").val("");
 	});
 
 		// When you click the delete article button
 		$(document).on("click", ".deleteArticle", function() {
 		// Grab the id associated with the button
 		  var thisId = $(this).attr("data-id");
-		  console.log(thisId);
+
 		  // Run a POST request to delete article
 		   $.ajax({
 		    method: "POST",
@@ -81,8 +73,3 @@ $(document).ready(function() {
 		});
 
 });
-
-
-
-
-

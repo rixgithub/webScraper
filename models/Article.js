@@ -24,10 +24,10 @@ var ArticleSchema = new Schema({
     unique: true
   },
   // This only saves one note's ObjectId, ref refers to the Note model
-  notes: [{
+  note: {
     type: Schema.Types.ObjectId,
     ref: "Note"
-  }]
+  }
 });
 
 // Apply the uniqueValidator plugin to userSchema.

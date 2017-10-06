@@ -108,11 +108,10 @@ module.exports = function(router) {
 
 	// Grab an article by it's ObjectId
 	router.get("/articles/:id", function(req, res) {
-		console.log(req.params.id);
 	  // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
 	  Article.findOne({ "_id": req.params.id })
 	  // ..and populate all of the notes associated with it
-	  .populate("notes")
+	  .populate("note")
 	  // now, execute our query
 	  .exec(function(error, data) {
 	    // Log any errors
@@ -129,6 +128,7 @@ module.exports = function(router) {
 
 	// Create a new note or replace an existing note
 	router.post("/articles/:id", function(req, res) {
+		
 	  // Create a new note and pass the req.body to the entry
 	  var newNote = new Note(req.body);
 
@@ -168,7 +168,6 @@ module.exports = function(router) {
 	      console.log(error);
 	    }
 	    else {
-	    	console.log("need to render page again?");
 	    	res.render('saved');
 	    }
 	  });

@@ -9,7 +9,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Mongo Web Scraper</a>
+          <a class="navbar-brand" href="/">Mongo Scraper</a>
+          <a href="/scrape"><button type="button" id="newScrape" class="btn btn-default btn-md">Scrape New Articles</button></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -20,19 +21,40 @@
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
-    </nav>
+    </nav> 
+     
+<!-- note modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Leave A Note</h5>
+      </div>
+      <div class="modal-body">
+        <div class="container" id="articleNotes"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- note modal -->
 
-  <div class="container" id="mainDiv">
+<div class="wrapper">  
 
+      <div class="container">
         <div class="row">
           <div class="col-lg-12">
             <div class="container" id="jumbo">
-              <h1>Mongo Web Scraper</h1>
+              <h1>Mongo Scraper</h1>
               <h2>Saved ZNet Articles<h2>
             </div>
           </div>
         </div>
+      </div>
 
+      <div class="container">
         <div class="row">
           <div class="col-lg-12">
             <div class="container" id="savedArticles">
@@ -62,14 +84,17 @@
                   </div>
                 {{/each}}
             </div>
-          <div class="col-lg-12">
-        </div>
-        
-        <div class="container" id="divForNotes">
-          <div class="container" id="articleNotes">
-            <!-- notes for articles go here-->
           </div>
-  </div>
+        </div>
+      </div>
+        
+</div>
+
+    <footer class="footer">
+      <div class="container">
+        <p>Mongo Scraper &copy; 2017 Ricky Lee Grams</p>
+      </div>
+    </footer>
 
     <!-- jquery link -->
     <script
@@ -82,7 +107,3 @@
  
     <!-- javascript link for saved page -->
     <script src="/javascripts/saved.js"></script>
-
-
-
-

@@ -1,11 +1,15 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
  	background: url("../images/bgimage.jpg") no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	width: 100%;
-	height: 100%;
+	margin: 0 0 100px; /* bottom = footer height */
 }
 
 .navbar {
@@ -44,6 +48,10 @@ h2 {
 	text-shadow: 2px 4px 3px rgba(0,0,0,0.50);
 }
 
+.wrapper {
+	margin-bottom:50px;/* Height of footer*/
+}
+
 .panel-heading h3 a {
 	font-size: 230%;
 }
@@ -78,26 +86,12 @@ h4 {
 	font-size: 1.6em;
 }
 
-.divForArticles {
-	overflow: auto;
-}
-
 a:link {
     text-decoration: none;
 }
 
 a:hover {
     color: white;
-}
-
-.divForNotes {
-	overflow: auto;
-}
-
-#noteDiv {
-	background-color: black;
-	height: 300px;
-	width: 300px;
 }
 
 .saveButton {
@@ -117,4 +111,27 @@ a:hover {
 	background-color: #5f80d3;
 	font-size: 135%;
 	color: white;
+}
+
+#bodyInput {
+	max-width: 500px;
+}
+
+.saveNote {
+	margin-top: 10px;
+}
+
+footer {
+	position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    overflow:hidden;
+	text-align: center;
+	padding-top: 15px;
+	font-size: 15px;
+	color: white;
+	background: rgba(0,0,0,0.25);
+	border: rgba(0,0,0,0.25);
 }
